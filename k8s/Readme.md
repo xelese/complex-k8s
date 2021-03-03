@@ -1,4 +1,5 @@
-##This folder houses all the configuration files need by kubernetes.
+This folder houses all the configuration files need by kubernetes.
+--
 ![K8s design](../images/kubernetes-design.png?raw=true "K8s design")
 
 One separate config file for each type (total 11)

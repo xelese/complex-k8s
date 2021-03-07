@@ -43,15 +43,26 @@ Refresher for Object Types:
 5. Postgres [Deployment](./postgres-deployment.yaml) and its [service](./postgres-cluster-ip-service.yaml). We also need
    to add in the environment variables to connect with different services.
 
+6. [Persistent Volume claim](db-per-volume-claim.yaml)
 
+7. Next moving on to creating secrets using kubectl.
 
-Persistent Volume Claim:
-    - Right now if postgres fails the whole data is lost. To save that we use volumes to save data to the host machine.
-      
+   ``kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345asdf``
+
+   other types: ``generic``, ``docker-registry``, ``tls``
+
+   can view the secret using:
+   ``kubectl get secrets``
+
+Persistent Volume Claim
+---------
+
+Right now if postgres fails the whole data is lost. To save that we use volumes to save data to the host machine.
 
 PROBLEM:
+
 ![postgres1](../images/postgres-deployment-1.png?raw=true "postgres")
-     
+
 ![postgres2](../images/postgres-persistent-data.png?raw=true "postgres2")
 
 SOLUTION:
@@ -64,3 +75,6 @@ destroyed if pod crashes. We are not using that.
 ![postgres4](../images/Volume-vs-persistent-volume.png?raw=true "postgres4")
 
 ![postgres5](../images/Volume-vs-persistent-volume-2.png?raw=true "postgres5")
+
+Initialized the env variables in server and worker pods.
+

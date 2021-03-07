@@ -45,7 +45,9 @@ Refresher for Object Types:
 
 6. [Persistent Volume claim](db-per-volume-claim.yaml)
 
-7. Next moving on to creating secrets using kubectl.
+7. Initialized the env variables in server and worker pods.
+
+8.   Next moving on to creating secrets using kubectl.
 
    ``kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345asdf``
 
@@ -75,6 +77,3 @@ destroyed if pod crashes. We are not using that.
 ![postgres4](../images/Volume-vs-persistent-volume.png?raw=true "postgres4")
 
 ![postgres5](../images/Volume-vs-persistent-volume-2.png?raw=true "postgres5")
-
-Initialized the env variables in server and worker pods.
-

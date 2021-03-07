@@ -18,6 +18,7 @@ Creation:
 --
 
 Refresher for Object Types:
+
 ![object types](../images/k8s-object-types.png?raw=true "object types")
 
 1. We first created the multi-client deployment called [client-deployment](./client-deployment.yaml). which has a 
@@ -31,3 +32,8 @@ similarly.
    
 3. Next is the creation of [multi-worker deployment](./worker-deployment.yaml) and its 
    [service]()
+
+4. Redis [Deployment](./redis-deployment.yaml) and [Service](./redis-cluster-ip-service.yaml)   
+
+5. Postgres [Deployment](./postgres-deployment.yaml) and its [service](./postgres-cluster-ip-service.yaml). We also need
+   to add in the environment variables to connect with different services.

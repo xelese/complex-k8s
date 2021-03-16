@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\k8s\ingress-service.yaml">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

@@ -45,9 +45,9 @@ Refresher for Object Types:
 
 6. [Persistent Volume claim](db-per-volume-claim.yaml)
 
-7. Initialized the env variables in server and worker pods.
+7. Initialized the env variables in [server](./server-deployment.yaml) and [worker](./worker-deployment.yaml) pods.
 
-8.   Next moving on to creating secrets using kubectl.
+8. Next moving on to creating secrets using kubectl.
 
    ``kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345asdf``
 
@@ -55,9 +55,11 @@ Refresher for Object Types:
 
    can view the secret using:
    ``kubectl get secrets``
+9. Next we create the [Ingress](./ingress-service.yaml) controller and not the Load balancer for routing traffic. Load balancers are 
+   legacy/deprecated and are not recommended for use anymore.
 
 Persistent Volume Claim
----------
+--
 
 Right now if postgres fails the whole data is lost. To save that we use volumes to save data to the host machine.
 
@@ -77,3 +79,36 @@ destroyed if pod crashes. We are not using that.
 ![postgres4](../images/Volume-vs-persistent-volume.png?raw=true "postgres4")
 
 ![postgres5](../images/Volume-vs-persistent-volume-2.png?raw=true "postgres5")
+
+Ingress Controller
+--
+
+NOTE: Ingress controllers need to be configured differently based on the platform, so the config will change for local
+or Google kubernetes cluster. 
+
+![ingress1](../images/community-Ingress.png?raw=true "ingress1")
+
+link to git: https://github.com/kubernetes/ingress-nginx
+   - This is open source and works really well. Lot of backing.
+
+
+How ingress controller routes traffic?
+![ingress2](../images/how-ingress-works.png?raw=true "ingress2")
+
+The ingress controller and the thing that accepts and routes traffic is exactly the same.
+
+```
+Just in case you wanted to understand ingress-nginx a bit better,
+check out this article by Hongli Lai - 
+https://www.joyfulbikeshedding.com/blog/2018-03-26-studying-the-kubernetes-ingress-system.html.  
+Hongli is an absolute genius, he co-created Phusion Passenger, an extremely popular webserver that 
+integrates with Nginx.
+```
+
+We can Verify the service was enabled by running the following:
+
+``kubectl get pods -n ingress-nginx``
+
+It should show something similar:
+
+``ingress-nginx-controller-5cc4589cc8-x7pg2   1/1     Running     0          66s``

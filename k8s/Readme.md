@@ -93,6 +93,7 @@ link to git: https://github.com/kubernetes/ingress-nginx
 
 
 How ingress controller routes traffic?
+
 ![ingress2](../images/how-ingress-works.png?raw=true "ingress2")
 
 The ingress controller and the thing that accepts and routes traffic is exactly the same.
